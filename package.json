@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "add": "^2.0.6",
+    "git": "^0.1.5",
     "inquirer": "^8.2.4"
   }
 }

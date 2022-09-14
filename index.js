@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -60,9 +61,10 @@ const questions = [
      },
      {
         name: 'licensing',
-        type: 'input',
+        type: 'list',
         message: 'For licensing purposes, what can and cannot other developers do with your project?',
-     }
+        choices: ['Apache', 'GNU', 'Mit'],
+    }
 ];
 
 
