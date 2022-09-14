@@ -1,3 +1,5 @@
+const index = require('../index');
+
 // Creates a function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   let badge = '';
@@ -40,41 +42,45 @@ function renderLicenseSection(license) {
     return renderLicense;
 }
 
-
-
 // Function to generate markdown for README
 function generateMarkdown(data) {
   return `
     # **${data.title}**
+    
+    ${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
 
     ## Description
-    ${data.projectMotivation} 
-    ${data.projectWhy}
-    ${data.projectWhat}
-    
-    ## Features
-    ${data.features}
-    
-    ## User Installation
+    ${data.description} 
+
+    ## Table of Contents
+    - [Description](#Description)
+    - [Installation](#Installation)
+    - [Usage](#Usage)
+    - [License] (#License)
+    - [Contributing](#Contributing)
+    - [Tests](#Tests)
+    - [Questions](#Questions)
+
+    ## Installation
     ${data.installation}
     
-    ## User Instructions
-    ${data.instructions}
+    ## Usage
+    ${data.usage}
+
+    ## License
+    ${renderLicenseLink(data.license)}
     
-    ## Third-party Assets
-    ${data.thirdpartyAssets}
-    
-    ## Links
+    ## Contributing
+    ${data.guidelines}
+
+    ## Tests
+    ${data.test}
+
+    ## Questions
+    * If you have any addition questions, you can contact me here: ${data.email}
     * Link to Website: ${data.linkWebsite}
-    * Link to GitHub Repository: ${data.linkGithub}
-    
-    ## Collaborators
-    ${data.collaborators}
-    
-    ## Licensing
-    * ${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
-    * ${renderLicenseLink(data.license)}
-`;
+    * Link to GitHub: github.com/${data.github}
+`
 }
 
 module.exports = generateMarkdown;

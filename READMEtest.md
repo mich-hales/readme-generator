@@ -1,10 +1,10 @@
 
-    # **Readme Generator**
+    # **readme file generator**
     
     License: Apache [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]
 
     ## Description
-    Generates a readme file 
+    generates readme file 
 
     ## Table of Contents
     - [Description](#Description)
@@ -16,10 +16,10 @@
     - [Questions](#Questions)
 
     ## Installation
-    Install npm and inquirer
+    npm and inquirer
     
     ## Usage
-    not sure
+    follow directions through the terminal
 
     ## License
     (https://opensource.org/licenses/Apache-2.0)
@@ -28,9 +28,9 @@
     none
 
     ## Tests
-    yes.
+    none
 
     ## Questions
     * If you have any addition questions, you can contact me here: michellehales93@gmail.com
-    * Link to Website: here
+    * Link to Website: none
     * Link to GitHub: github.com/(mich-hales)

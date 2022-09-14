@@ -10,39 +10,29 @@ const questions = [
        message: 'What is the title of your project?',
     },
     {
-        name: 'projectMotivation',
+        name: 'description',
         type: 'input',
-        message: 'What was your motivation behind the project?',
-     },
-     {
-        name: 'projectWhy',
-        type: 'input',
-        message: 'Why did you build this project?',
-     },
-     {
-        name: 'projectWhat',
-        type: 'input',
-        message: 'What problem does it solve?',
-     },
-     {
-        name: 'features',
-        type: 'input',
-        message: 'What features does it have?',
+        message: 'Include a description of your project.',
      },
      {
         name: 'installation',
         type: 'input',
-        message: 'What are the steps required to install your project? Provide a step by step description of how to get the development environment running.',
+        message: 'What are the steps required to install your project? Provide a description of how to get the development environment running.',
      },
      {
-        name: 'instructions',
+        name: 'usage',
         type: 'input',
-        message: 'What instructions need to be provided to assist the users? Include screenshots as needed.',
+        message: 'What instructions need to be provided to assist the users with the project usage?',
      },
      {
-        name: 'thirdpartyAssets',
+        name: 'guidelines',
         type: 'input',
-        message: 'Did you use any third-party assets that require attributition? If any, list the creators with links to their primary web presence.',
+        message: 'What are the contribution guidelines?',
+     },
+     {
+        name: 'test',
+        type: 'input',
+        message: 'Please provide test instructions.'
      },
      {
         name: 'linkWebsite',
@@ -50,14 +40,14 @@ const questions = [
         message: 'What is the link to the website?',
      },
      {
-        name: 'linkGithub',
+        name: 'github',
         type: 'input',
-        message: 'What is the link to the GitHub repository?',
+        message: 'What is your GitHub username?',
      },
      {
-        name: 'collaborators',
+        name: 'email',
         type: 'input',
-        message: 'Did you have collaborators? If any, list them with links to their GitHub profiles.',
+        message: 'What is your email address?',
      },
      {
         name: 'license',
@@ -78,7 +68,7 @@ function inquirerPrompts() {
 
 // function to write the README.md file
 function writeToFile(data) {
-    fs.writeFile(`README.md`, generateMarkdown(data), (err) =>
+    fs.writeFile('README.md', generateMarkdown(data), (err) =>
     err ? console.log(err) : console.log('Success!'));
 }
 
