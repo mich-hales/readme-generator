@@ -66,60 +66,53 @@ const questions = [
 ];
 
 
-const readmeContents = ({ projectTitle, projectMotivation, projectWhy, projectWhat, features, installation,
-instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing }) => `
-# ${projectTitle}
-
-## Description
-${projectMotivation} 
-${projectWhy}
-${projectWhat}
-
-## Features
-${features}
-
-## User Installation
-${installation}
-
-## User Instructions
-${instructions}
-
-## Third-party Assets
-${thirdpartyAssets}
-
-## Links
-* Link to Website: ${linkWebsite}
-* Link to GitHub Repository: ${linkGithub}
-
-## Collaborators
-${collaborators}
-
-## Licensing
-${licensing}
-`
-
-// prompts the user with the questions
-inquirer.prompt(questions)
-.then((data) => {
-    const { projectTitle, projectMotivation, projectWhy, projectWhat, 
-        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing } = data;
-
-    const fileName = `READMEtest.md`
+const writeToFile = (projectTitle, projectMotivation, projectWhy, projectWhat, features, installation,
+instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing) =>
+    `
+    # ${projectTitle}
     
-    writeToFile(fileName, readmeContents(projectTitle, projectMotivation, projectWhy, projectWhat, 
-        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing));
-    console.log(data);
-})
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-    err ? console.log(err) : console.log('Success!'))
-}
+    ## Description
+    ${projectMotivation} 
+    ${projectWhy}
+    ${projectWhat}
+    
+    ## Features
+    ${features}
+    
+    ## User Installation
+    ${installation}
+    
+    ## User Instructions
+    ${instructions}
+    
+    ## Third-party Assets
+    ${thirdpartyAssets}
+    
+    ## Links
+    * Link to Website: ${linkWebsite}
+    * Link to GitHub Repository: ${linkGithub}
+    
+    ## Collaborators
+    ${collaborators}
+    
+    ## Licensing
+    ${licensing}
+    `;
 
 // TODO: Create a function to initialize app
 function init() {
+inquirer.prompt(questions)
+.then((answers) => {
+    console.log(answers)
+    const { projectTitle, projectMotivation, projectWhy, projectWhat, 
+        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing } = answers;
+
+    const readmeContents = writeToFile(projectTitle, projectMotivation, projectWhy, projectWhat, 
+        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing);
+
+    fs.writeFile(`READMEtest.md`, readmeContents, (err) =>
+    err ? console.log(err) : console.log('Success!'))
+    })
 }
 
 // Function call to initialize app
