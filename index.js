@@ -5,7 +5,7 @@ const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const questions = [
     {
-       name: 'projectTitle',
+       name: 'title',
        type: 'input',
        message: 'What is the title of your project?',
     },
@@ -68,53 +68,56 @@ const questions = [
 ];
 
 
-const writeToFile = (projectTitle, projectMotivation, projectWhy, projectWhat, features, installation,
-instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing) =>
-    `
-    # ${projectTitle}
+// const writeToFile = (title, projectMotivation, projectWhy, projectWhat, features, installation,
+// instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing) =>
+//     `
+//     # ${title}
     
-    ## Description
-    ${projectMotivation} 
-    ${projectWhy}
-    ${projectWhat}
+//     ## Description
+//     ${projectMotivation} 
+//     ${projectWhy}
+//     ${projectWhat}
     
-    ## Features
-    ${features}
+//     ## Features
+//     ${features}
     
-    ## User Installation
-    ${installation}
+//     ## User Installation
+//     ${installation}
     
-    ## User Instructions
-    ${instructions}
+//     ## User Instructions
+//     ${instructions}
     
-    ## Third-party Assets
-    ${thirdpartyAssets}
+//     ## Third-party Assets
+//     ${thirdpartyAssets}
     
-    ## Links
-    * Link to Website: ${linkWebsite}
-    * Link to GitHub Repository: ${linkGithub}
+//     ## Links
+//     * Link to Website: ${linkWebsite}
+//     * Link to GitHub Repository: ${linkGithub}
     
-    ## Collaborators
-    ${collaborators}
+//     ## Collaborators
+//     ${collaborators}
     
-    ## Licensing
-    ${licensing}
-    `;
+//     ## Licensing
+//     ${licensing}
+//     `;
+
+
+function inquirerPrompts() {
+    inquirer.prompt(questions)
+    .then((answers) => {
+        console.log(answers)
+        writeToFile(answers);
+        })
+}
+
+function writeToFile(data) {
+    fs.writeFile(`READMEtest.md`, generateMarkdown(data), (err) =>
+    err ? console.log(err) : console.log('Success!'));
+}
 
 // TODO: Create a function to initialize app
 function init() {
-inquirer.prompt(questions)
-.then((answers) => {
-    console.log(answers)
-    const { projectTitle, projectMotivation, projectWhy, projectWhat, 
-        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing } = answers;
-
-    const readmeContents = writeToFile(projectTitle, projectMotivation, projectWhy, projectWhat, 
-        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing);
-
-    fs.writeFile(`READMEtest.md`, readmeContents, (err) =>
-    err ? console.log(err) : console.log('Success!'))
-    })
+    inquirerPrompts();
 }
 
 // Function call to initialize app
