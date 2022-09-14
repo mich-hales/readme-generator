@@ -8,14 +8,13 @@ function renderLicenseBadge(license) {
   ];
 
   // If there is no license, it will return an empty string
-  for (let i = 0; i < licenseOptions.length, i++) {
+  for (let i = 0; i < licenseOptions.length, i++;) {
     if (license === licenseOptions[i]) {
       return licenseBadges[i];
     } else {
       return '';
     }
   }
-
 }
 
 // A function that returns the license link
@@ -39,15 +38,21 @@ function renderLicenseLink(license) {
 // Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-
+    let licensing = '';
+    if (license === 'None') {
+      licensing = '';
+    } else {
+      licensing = `License: ${license}`;
+    }
+    return licensing;
 }
 
 
 
-// TODO: Create a function to generate markdown for README
+// Function to generate markdown for README
 function generateMarkdown(data) {
   return `
-    # ${data.title}
+    # **${data.title}**
 
     ## Description
     ${data.projectMotivation} 
@@ -74,7 +79,8 @@ function generateMarkdown(data) {
     ${data.collaborators}
     
     ## Licensing
-    ${data.licensing}
+    ${renderLicenseSection(data.license)} ${renderLicenseLink(data.license)}
+    ${renderLicenseBadge(data.license)}
 `;
 }
 

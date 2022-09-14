@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const questions = [
     {
        name: 'title',
@@ -60,48 +60,14 @@ const questions = [
         message: 'Did you have collaborators? If any, list them with links to their GitHub profiles.',
      },
      {
-        name: 'licensing',
+        name: 'license',
         type: 'list',
         message: 'For licensing purposes, what can and cannot other developers do with your project?',
-        choices: ['Apache', 'GNU', 'Mit'],
+        choices: ['Apache', 'GNU', 'Mit', 'None'],
     }
 ];
 
-
-// const writeToFile = (title, projectMotivation, projectWhy, projectWhat, features, installation,
-// instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing) =>
-//     `
-//     # ${title}
-    
-//     ## Description
-//     ${projectMotivation} 
-//     ${projectWhy}
-//     ${projectWhat}
-    
-//     ## Features
-//     ${features}
-    
-//     ## User Installation
-//     ${installation}
-    
-//     ## User Instructions
-//     ${instructions}
-    
-//     ## Third-party Assets
-//     ${thirdpartyAssets}
-    
-//     ## Links
-//     * Link to Website: ${linkWebsite}
-//     * Link to GitHub Repository: ${linkGithub}
-    
-//     ## Collaborators
-//     ${collaborators}
-    
-//     ## Licensing
-//     ${licensing}
-//     `;
-
-
+// function to prompt the questions
 function inquirerPrompts() {
     inquirer.prompt(questions)
     .then((answers) => {
@@ -110,6 +76,7 @@ function inquirerPrompts() {
         })
 }
 
+// function to write the README.md file
 function writeToFile(data) {
     fs.writeFile(`READMEtest.md`, generateMarkdown(data), (err) =>
     err ? console.log(err) : console.log('Success!'));
