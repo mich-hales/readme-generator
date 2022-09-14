@@ -65,6 +65,39 @@ const questions = [
      }
 ];
 
+
+const readmeContents = ({ projectTitle, projectMotivation, projectWhy, projectWhat, features, installation,
+instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing }) => `
+# ${projectTitle}
+
+## Description
+${projectMotivation} 
+${projectWhy}
+${projectWhat}
+
+## Features
+${features}
+
+## User Installation
+${installation}
+
+## User Instructions
+${instructions}
+
+## Third-party Assets
+${thirdpartyAssets}
+
+## Links
+* Link to Website: ${linkWebsite}
+* Link to GitHub Repository: ${linkGithub}
+
+## Collaborators
+${collaborators}
+
+## Licensing
+${licensing}
+`
+
 // prompts the user with the questions
 inquirer.prompt(questions)
 .then((data) => {
@@ -73,46 +106,15 @@ inquirer.prompt(questions)
 
     const fileName = `READMEtest.md`
     
-
-    let readmeContents = `
-    # ${projectTitle}
-    
-    ## Description
-    ${projectMotivation} 
-    ${projectWhy}
-    ${projectWhat}
-    
-    ## Features
-    ${features}
-    
-    ## User Installation
-    ${installation}
-    
-    ## User Instructions
-    ${instructions}
-    
-    ## Third-party Assets
-    ${thirdpartyAssets}
-    
-    ## Links
-    * Link to Website: ${linkWebsite}
-    * Link to GitHub Repository: ${linkGithub}
-    
-    ## Collaborators
-    ${collaborators}
-    
-    ## Licensing
-    ${licensing}
-    `
-
-    writeToFile(fileName, readmeContents);
+    writeToFile(fileName, readmeContents(projectTitle, projectMotivation, projectWhy, projectWhat, 
+        features, installation, instructions, thirdpartyAssets, linkWebsite, linkGithub, collaborators, licensing));
     console.log(data);
 })
 
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, readmeContents, (err) =>
+    fs.writeFile(fileName, data, (err) =>
     err ? console.log(err) : console.log('Success!'))
 }
 
