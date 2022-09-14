@@ -1,50 +1,43 @@
 // Creates a function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
-  const licenseOptions = ['Apache', 'GNU', 'MIT'];
-  const licenseBadges = [
-    '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]',
-    '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]',
-    '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]'
-  ];
-
-  // If there is no license, it will return an empty string
-  for (let i = 0; i < licenseOptions.length, i++;) {
-    if (license === licenseOptions[i]) {
-      return licenseBadges[i];
-    } else {
-      return '';
-    }
+  let badge = '';
+  if (license === 'Apache') {
+    badge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]';
+  } else if (license === 'GNU') {
+    badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]';
+  } else if (license === 'MIT') {
+    badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]';
+  } else {
+    badge = '';
   }
+  return badge;
 }
 
 // A function that returns the license link
 function renderLicenseLink(license) {
-  const renderLicenseOptions = ['Apache', 'GNU', 'MIT'];
-  const renderLicenseLinks = [
-    '(https://opensource.org/licenses/Apache-2.0)',
-    '(https://www.gnu.org/licenses/gpl-3.0)',
-    '(https://opensource.org/licenses/MIT)'
-  ];
-  // If there is no license, it will return an empty string
-  for (let i = 0; i < renderLicenseOptions.length; i++) {
-    if (license === renderLicenseOptions[i]) {
-      return renderLicenseLinks[i];
-    } else {
-      return '';
-    }
+  link = '';
+  if (license === 'Apache') {
+    link = '(https://opensource.org/licenses/Apache-2.0)';
+  } else if (license === 'GNU') {
+    link = '(https://www.gnu.org/licenses/gpl-3.0)';
+  } else if (license === 'MIT') {
+    link = '(https://opensource.org/licenses/MIT)';
+  } else {
+    link = ''
   }
+  return link;
 }
 
 // Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-    let licensing = '';
+    let renderLicense = '';
     if (license === 'None') {
-      licensing = '';
+      renderLicense = '';
     } else {
-      licensing = `License: ${license}`;
+      renderLicense = `License: ${license}`;
     }
-    return licensing;
+    return renderLicense;
 }
 
 
@@ -79,8 +72,8 @@ function generateMarkdown(data) {
     ${data.collaborators}
     
     ## Licensing
-    ${renderLicenseSection(data.license)} ${renderLicenseLink(data.license)}
-    ${renderLicenseBadge(data.license)}
+    * ${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
+    * ${renderLicenseLink(data.license)}
 `;
 }
 

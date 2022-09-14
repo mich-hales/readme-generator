@@ -78,7 +78,7 @@ function inquirerPrompts() {
 
 // function to write the README.md file
 function writeToFile(data) {
-    fs.writeFile(`READMEtest.md`, generateMarkdown(data), (err) =>
+    fs.writeFile(`README.md`, generateMarkdown(data), (err) =>
     err ? console.log(err) : console.log('Success!'));
 }
 
