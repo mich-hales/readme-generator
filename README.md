@@ -26,10 +26,9 @@ This application will start by running `node index.js` from the command line. Fo
 After answering all the prompts, your README file will be named 'MockupREADME.md' and will be ready for you at the root of the repository. 
 
 ## Usage
+https://user-images.githubusercontent.com/107455470/190713569-e0bc1a1b-8fdd-4a82-84d9-835d0355a084.mp4
 
-
-https://user-images.githubusercontent.com/107455470/190710054-a3211ecf-f209-41fa-a772-3c87f9931535.mp4
-
+https://user-images.githubusercontent.com/107455470/190713579-e8d5470c-97d9-4010-8ae5-853580d1dfce.mp4
 
 When you run `node index.js`, the application uses the inquirer package to prompt you in the command line with a series of questions about your project. `fs.writeFile` is then used to generate your project's README.md file. 
 
