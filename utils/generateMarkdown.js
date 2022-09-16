@@ -1,14 +1,12 @@
-const index = require('../index');
-
 // Creates a function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   let badge = '';
   if (license === 'Apache') {
-    badge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]';
+    badge = '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';
   } else if (license === 'GNU') {
-    badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]';
+    badge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)';
   } else if (license === 'MIT') {
-    badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]';
+    badge = '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)';
   } else {
     badge = '';
   }
@@ -19,19 +17,18 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   link = '';
   if (license === 'Apache') {
-    link = '(https://opensource.org/licenses/Apache-2.0)';
+    link = 'https://opensource.org/licenses/Apache-2.0';
   } else if (license === 'GNU') {
-    link = '(https://www.gnu.org/licenses/gpl-3.0)';
+    link = 'https://www.gnu.org/licenses/gpl-3.0';
   } else if (license === 'MIT') {
-    link = '(https://opensource.org/licenses/MIT)';
+    link = 'https://opensource.org/licenses/MIT';
   } else {
     link = ''
   }
   return link;
 }
 
-// Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Creates a function that returns the license section of README
 function renderLicenseSection(license) {
     let renderLicense = '';
     if (license === 'None') {
@@ -44,43 +41,51 @@ function renderLicenseSection(license) {
 
 // Function to generate markdown for README
 function generateMarkdown(data) {
+  // Readme template literal
   return `
-    # **${data.title}**
+# **${data.title}**
     
-    ${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
+${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
 
-    ## Description
-    ${data.description} 
+## Description
+${data.description} 
 
-    ## Table of Contents
-    - [Description](#Description)
-    - [Installation](#Installation)
-    - [Usage](#Usage)
-    - [License] (#License)
-    - [Contributing](#Contributing)
-    - [Tests](#Tests)
-    - [Questions](#Questions)
+## Table of Contents
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [Contributing](#Contributing)
+- [Tests](#Tests)
+- [Questions](#Questions)
 
-    ## Installation
-    ${data.installation}
+## Installation
+${data.installation}
     
-    ## Usage
-    ${data.usage}
+## Usage
+${data.usage}
 
-    ## License
-    ${renderLicenseLink(data.license)}
+## License
+${renderLicenseLink(data.license)}
     
-    ## Contributing
-    ${data.guidelines}
+## Contributing
+${data.guidelines}
 
-    ## Tests
-    ${data.test}
+## Tests
+${data.test}
 
-    ## Questions
-    * If you have any addition questions, you can contact me here: ${data.email}
-    * Link to Website: ${data.linkWebsite}
-    * Link to GitHub: github.com/${data.github}
+## Questions
+* If you have any addition questions, you can contact me here: ${data.email}
+
+## Links
+* Link to Website: ${data.linkWebsite}
+* Link to GitHub Repository: ${data.githubLink}
+* Link to GitHub: https://github.com/${data.github}
+
+## Mockup
+![screenshot of project](${data.screenshot})
 `
 }
 
+// Exports the generateMarkdown function to index.js
 module.exports = generateMarkdown;

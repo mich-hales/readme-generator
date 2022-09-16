@@ -45,6 +45,16 @@ const questions = [
         message: 'What is your GitHub username?',
      },
      {
+        name: 'githubLink',
+        type: 'input',
+        message: 'What is the link to your GitHub repository?',
+     },
+     {
+        name: 'screenshot',
+        type: 'input',
+        message: 'Please provide the pathway from your current directory to a screenshot of the application.',
+     },
+     {
         name: 'email',
         type: 'input',
         message: 'What is your email address?',
@@ -52,12 +62,12 @@ const questions = [
      {
         name: 'license',
         type: 'list',
-        message: 'For licensing purposes, what can and cannot other developers do with your project?',
-        choices: ['Apache', 'GNU', 'Mit', 'None'],
+        message: 'Please select the license you would like to use for your project.',
+        choices: ['Apache', 'GNU', 'MIT', 'None'],
     }
 ];
 
-// function to prompt the questions
+// Function to prompt the questions
 function inquirerPrompts() {
     inquirer.prompt(questions)
     .then((answers) => {
@@ -66,13 +76,13 @@ function inquirerPrompts() {
         })
 }
 
-// function to write the README.md file
+// Function to write the README.md file
 function writeToFile(data) {
     fs.writeFile('README.md', generateMarkdown(data), (err) =>
     err ? console.log(err) : console.log('Success!'));
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 function init() {
     inquirerPrompts();
 }
