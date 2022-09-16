@@ -30,12 +30,6 @@ When you run `node index.js`, the application uses the inquirer package to promp
 
 ## License
 MIT: https://opensource.org/licenses/MIT
-    
-## Contributing
-
-
-## Tests
-
 
 ## Questions
 * If you have any addition questions, you can contact me here: michellehales93@gmail.com
