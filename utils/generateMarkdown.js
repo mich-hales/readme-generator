@@ -34,7 +34,7 @@ function renderLicenseSection(license) {
     if (license === 'None') {
       renderLicense = '';
     } else {
-      renderLicense = `License: ${license}`;
+      renderLicense = `${license}: `;
     }
     return renderLicense;
 }
@@ -45,7 +45,7 @@ function generateMarkdown(data) {
   return `
 # **${data.title}**
     
-${renderLicenseSection(data.license)} ${renderLicenseBadge(data.license)}
+${renderLicenseBadge(data.license)}
 
 ## Description
 ${data.description} 
@@ -66,7 +66,7 @@ ${data.installation}
 ${data.usage}
 
 ## License
-${renderLicenseLink(data.license)}
+${renderLicenseSection(data.license)} ${renderLicenseLink(data.license)} 
     
 ## Contributing
 ${data.guidelines}
